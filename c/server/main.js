@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import ServerSyncClient from 'meteor/chfritz:serversync';
 
+// *with* serversync package
+
 a = null;
 
 Meteor.startup(() => {

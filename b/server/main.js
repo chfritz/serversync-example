@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 // import { Items } from '../collections.js';
 
+// *without* serversync package
+
 Meteor.startup(() => {
   // code to run on server at startup
   const a = DDP.connect("http://localhost:3000");
