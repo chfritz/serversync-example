@@ -6,20 +6,21 @@ import './main.html';
 
 window.Items = Items;
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
+Template.list.onCreated(function() {
+  Meteor.subscribe('items');
 });
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
+Template.list.events({
+  'click a.delete': function() {
+    Items.remove(this._id);
   },
+  'click a.add': function() {
+    Items.insert({});
+  }
 });
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
+Template.list.helpers({
+  items() {
+    return Items.find();
   },
 });

@@ -3,20 +3,31 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
+Items = new Mongo.Collection('items');
+window.Items = Items;
+
+Template.list.onCreated(function() {
+  Meteor.subscribe('items');
 });
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
+
+Template.list.events({
+  'click a.delete': function() {
+    Items.remove(this._id);
+  },
+  'click a.add': function() {
+    Items.insert({});
+  },
+  'click a.disconnect': function() {
+    Meteor.call('disconnect');
+  },
+  'click a.reconnect': function() {
+    Meteor.call('reconnect');
   },
 });
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
+Template.list.helpers({
+  items() {
+    return Items.find();
   },
 });
