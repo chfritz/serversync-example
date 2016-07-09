@@ -1,0 +1,5 @@
+import { Mongo } from "meteor/mongo";
+
+const a = DDP.connect("http://localhost:3000");
+export let Items = new Mongo.Collection('items', a);
+a.subscribe("items");

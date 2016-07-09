@@ -1,0 +1,21 @@
+import { Meteor } from 'meteor/meteor';
+import ServerSync from 'meteor/chfritz:serversync';
+
+a = null;
+
+Meteor.startup(() => {
+  // code to run on server at startup
+
+  a = new ServerSync("http://localhost:3000");
+
+  a.sync('items', {
+    onReady: function() {
+      var coll = a.getCollection('items');
+      console.log("ready", coll.find().count());
+    }
+  });
+
+});
+
+
+
