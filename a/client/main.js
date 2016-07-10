@@ -15,7 +15,10 @@ Template.list.events({
     Items.remove(this._id);
   },
   'click a.add': function() {
-    Items.insert({});
+    Items.insert({date: Date.now()});
+  },
+  'click a.update': function() {
+    Items.update(this._id, {date: Date.now()});
   }
 });
 
