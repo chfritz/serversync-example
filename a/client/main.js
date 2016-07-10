@@ -15,11 +15,14 @@ Template.list.events({
     Items.remove(this._id);
   },
   'click a.add': function() {
-    Items.insert({date: Date.now()});
+    Items.insert({date1: Date.now(), date2: Date.now()});
   },
-  'click a.update': function() {
-    Items.update(this._id, {date: Date.now()});
-  }
+  'click a.date1': function() {
+    Items.update(this._id, {$set: {date1: Date.now()}});
+  },
+  'click a.date2': function() {
+    Items.update(this._id, {$set: {date2: Date.now()}});
+  },
 });
 
 Template.list.helpers({

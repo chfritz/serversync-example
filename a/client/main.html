@@ -11,9 +11,10 @@
 <template name="list">
   <ol>
   {{#each items}}
-  <li>{{_id}} {{date}} 
+  <li>{{_id}}
+    <a href="#" class="date1">{{date1}}</a>
+    <a href="#" class="date2">{{date2}}</a>
     <a href="#" class="delete">delete</a>
-    <a href="#" class="update">update</a>
   </li>
   {{/each}}
   <a href="#" class="add">Add</a>

@@ -10,7 +10,7 @@ Meteor.startup(() => {
     // if a date is given it is interpreted as a "minimum" date, only
     // newer items shown
     if (date) {
-      return Items.find({date: {$gt: date}});
+      return Items.find({date1: {$gt: date}});
     } else {
       return Items.find();
     }
