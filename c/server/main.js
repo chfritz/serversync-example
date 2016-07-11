@@ -22,8 +22,8 @@ Meteor.startup(() => {
       var coll = a.getCollection('items');
       console.log("ready", coll.find().count());
     },
-    args: [Date.now()] // testing selective publications: only get
-                       // items newer than our start time
+    // args: [Date.now()] // testing selective publications: only get
+    // items newer than our start time
   });
 
 });
