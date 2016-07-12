@@ -9,6 +9,10 @@ a = null;
 Meteor.startup(() => {
   // code to run on server at startup
 
+  Meteor.publish('myitems', function() {
+    return Items.find();
+  });
+
   a = new ServerSyncClient("http://localhost:3000");
   // a = new ServerSyncClient("http://localhost:3000", "online-write");
   // a = new ServerSyncClient("http://localhost:3000", "write");

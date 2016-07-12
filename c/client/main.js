@@ -7,7 +7,7 @@ import './main.html';
 window.Items = Items;
 
 Template.list.onCreated(function() {
-  Meteor.subscribe('items');
+  Meteor.subscribe('myitems');
 });
 
 
