@@ -17,7 +17,7 @@ Meteor.startup(() => {
   a.sync('items', {
     // mode: "read",
     mode: "write",
-    // collection: Items,
+    collection: Items,
     onReady: function() {
       var coll = a.getCollection('items');
       console.log("ready", coll.find().count());

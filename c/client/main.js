@@ -3,7 +3,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
-Items = new Mongo.Collection('items');
+// Items = new Mongo.Collection('items');
 window.Items = Items;
 
 Template.list.onCreated(function() {
