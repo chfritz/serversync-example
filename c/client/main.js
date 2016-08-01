@@ -8,6 +8,7 @@ window.Items = Items;
 
 Template.list.onCreated(function() {
   Meteor.subscribe('myitems');
+  Meteor.subscribe('status');
 });
 
 
@@ -37,4 +38,9 @@ Template.list.helpers({
   items() {
     return Items.find();
   },
+
+  connected() {
+    const status = Status.findOne("connection");
+    return (status && status.connected);
+  }
 });

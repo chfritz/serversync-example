@@ -13,9 +13,21 @@ Meteor.startup(() => {
     return Items.find();
   });
 
+  Status.remove({});
+  Status.insert({
+    _id: "connection",
+    connected: false
+  });
+  Meteor.publish('status', function() {
+    return Status.find();
+  });
+
   a = new ServerSyncClient("http://localhost:3000");
   // a = new ServerSyncClient("http://localhost:3000", "online-write");
   // a = new ServerSyncClient("http://localhost:3000", "write");
+  Status.update("connection", {
+    connected: true
+  });
 
   console.log("sync");
   a.sync('items', {
@@ -37,10 +49,16 @@ Meteor.methods({
   'disconnect': function() {
     console.log("try to disconnect");
     a._connection.disconnect();
+    Status.update("connection", {
+      connected: false
+    });
   },
   'reconnect': function() {
     console.log("try to reconnect");
     a._connection.reconnect();
+    Status.update("connection", {
+      connected: true
+    });
   }
 });
 
