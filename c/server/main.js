@@ -23,8 +23,7 @@ Meteor.startup(() => {
   });
 
   a = new ServerSyncClient("http://localhost:3000");
-  // a = new ServerSyncClient("http://localhost:3000", "online-write");
-  // a = new ServerSyncClient("http://localhost:3000", "write");
+
   Status.update("connection", {
     connected: true
   });
@@ -38,6 +37,18 @@ Meteor.startup(() => {
       var coll = a.getCollection('items');
       console.log("ready", coll.find().count());
     },
+    beforeSyncUp: function(type, doc) { 
+      console.log("beforeSyncUp", type, doc);
+    },
+    beforeSyncDown: function(type, doc) { 
+      console.log("beforeSyncDown", type, doc);
+    },
+    afterSyncUp: function(type, doc) { 
+      console.log("afterSyncUp", type, doc);
+    },
+    afterSyncDown: function(type, doc) { 
+      console.log("afterSyncDown", type, doc);
+    }
     // args: [Date.now()] // testing selective publications: only get
     // items newer than our start time
   });
