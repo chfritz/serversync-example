@@ -13,6 +13,10 @@ Meteor.startup(() => {
     return Items.find();
   });
 
+  Meteor.publish('myitems2', function() {
+    return Items2.find();
+  });
+
   Status.remove({});
   Status.insert({
     _id: "connection",
@@ -65,6 +69,10 @@ Meteor.startup(() => {
     
     // args: [Date.now()] // testing selective publications: only get
     // items newer than our start time
+  });
+
+  a.sync('items2', {
+    collection: Items2
   });
 
 });

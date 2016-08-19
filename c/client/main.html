@@ -9,15 +9,28 @@
 </body>
 
 <template name="list">
-  <ol>
-  {{#each items}}
-  <li>{{_id}} 
-    <a href="#" class="date1">{{date1}}</a>
-    <a href="#" class="date2">{{date2}}</a>
-    <a href="#" class="delete">delete</a>
-  </li>
-  {{/each}}
+  Items
   <a href="#" class="add">Add</a>
+  <ol>
+    {{#each items}}
+    <li>{{_id}} 
+      <a href="#" class="date1">{{date1}}</a>
+      <a href="#" class="date2">{{date2}}</a>
+      <a href="#" class="delete">delete</a>
+    </li>
+    {{/each}}
+  </ol>
+
+  Items2
+  <a href="#" class="add2">Add</a>
+  <ol>
+    {{#each items2}}
+    <li>{{_id}}
+      <a href="#" class="delete2">delete</a>
+      {{{mykeys}}}
+      <a href="#" class="addElement">+</a>
+    </li>
+    {{/each}}
   </ol>
 
   {{#if connected}}

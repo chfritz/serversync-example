@@ -15,5 +15,25 @@ Meteor.startup(() => {
       return Items.find();
     }
   });
+
+  Meteor.publish("items2", function() {
+    return Items2.find();
+  });
+
+  Meteor.publish("_serversync", function() {
+    return ServerSync.find();
+  });
+
 });
 
+
+Meteor.methods({
+  '_serversync_md5': function() {
+    // var wait = Meteor.wrapAsync(function(time, cb) {
+    //   Meteor.setTimeout(cb, time);
+    // });
+    // wait(5000);
+    // return true;
+    return CryptoJS.MD5(JSON.stringify(Items.find().fetch())).toString();
+  }
+});
