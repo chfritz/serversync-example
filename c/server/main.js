@@ -71,9 +71,9 @@ Meteor.startup(() => {
     // items newer than our start time
   });
 
-  a.sync('items2', {
-    collection: Items2
-  });
+  // a.sync('items2', {
+  //   collection: Items2
+  // });
 
 });
 

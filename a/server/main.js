@@ -6,23 +6,24 @@ Meteor.startup(() => {
   // code to run on server at startup
   console.log(Items.find().count());
   Meteor.publish("items", function(date) {
-    console.log("publish", date, Items.find().count());
+    console.log("publish", date, Items.find({date1: {$gt: Date.now()}}).count());
     // if a date is given it is interpreted as a "minimum" date, only
     // newer items shown
-    if (date) {
-      return Items.find({date1: {$gt: date}});
-    } else {
+    // if (date) {
+    //   return Items.find({date1: {$gt: date}});
+    // } else {
       return Items.find();
-    }
+    // }
+    // return Items.find({date1: {$gt: Date.now()}});
   });
 
   Meteor.publish("items2", function() {
     return Items2.find();
   });
 
-  Meteor.publish("_serversync", function() {
-    return ServerSync.find();
-  });
+  // Meteor.publish("_serversync", function() {
+  //   return ServerSync.find();
+  // });
 
 });
 
