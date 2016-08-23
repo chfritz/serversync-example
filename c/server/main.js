@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import ServerSyncClient from 'meteor/chfritz:serversync';
+import { ServerSyncSubscriber, name } from 'meteor/chfritz:serversync';
 
 // SLAVE
 // *with* serversync package
@@ -26,7 +26,7 @@ Meteor.startup(() => {
     return Status.find();
   });
 
-  a = new ServerSyncClient("http://localhost:3000", {
+  a = new ServerSyncSubscriber("http://localhost:3000", {
     onConnect: function() {
       console.log("connected to master");
     },

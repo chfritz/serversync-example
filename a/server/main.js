@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { ServerSyncPublisher } from 'meteor/chfritz:serversync';
 
 // MASTER
 
